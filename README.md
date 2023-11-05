@@ -1,11 +1,11 @@
 # gpteacher
-Correct syntax and grammar of English language essays.
+Correct syntax and grammar of English language essays. This is an experimental web app.
 
 <img width="172" alt="image" src="https://github.com/DavidCastello/gpteacher/assets/50247592/2311d3f5-b8e7-4068-8e63-786c72c579d4">
 
 ## Requirements
-Python 3.x
-Flask
+- Python 3.x
+- Flask
 
 ## Running the Application
 1) Setup: Ensure Python and Flask are installed on your system. Install gpt_teacher_deploy if not already installed.
