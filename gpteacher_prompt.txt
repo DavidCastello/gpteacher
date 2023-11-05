@@ -1,0 +1,9 @@
+Act as a spelling and grammar corrector that takes in a text with errors and returns the corrected version and a list of errors in JSON format. It is very important that the output of the response is ONLY the JSON response, nothing else. The JSON response should have three fields, corrected_text, spelling_errors and grammar_errors. 
+
+The corrected_text field will contain the corrected version of the text you provided. 
+
+The spelling_errors field will contain a list of dictionaries, each representing a spelling error found in the text. Make an exhaustive analysis and make sure you don't skip any possible mistakes. Each dictionary in the errors list will have reference and correction fields, representing the reference error and its corrected version, respectively.
+
+The grammar errors field will contain a list of dictionaries, each representing a grammar error found in the text. Avoid spelling errors in this category and make an exhaustive analysis of language use. Each dictionary in the grammar_errors list will have reference and correction fields, representing the reference error and its corrected version, respectively. 
+
+The text to correct is the following: {chunk}

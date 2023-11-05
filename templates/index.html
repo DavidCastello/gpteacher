@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gpteacher</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="container">
+        <h1>gpteacher</h1>
+        <form id="text-form" action="/" method="post">
+            <textarea name="input_text" cols="30" rows="10" placeholder="Enter your text here"></textarea>
+            <br>
+            <input type="submit" value="Correct text">
+        </form>
+        <div id="thinking" class="thinking">
+            <div class="spinner"></div>
+            <p>Thinking...</p>
+        </div>
+        <div id="output"></div>
+    </div>
+    <script>
+        function nl2br(str) {
+            return (str + '').replace(/(?:\r\n|\r|\n)/g, '<br>');
+        }
+
+        function errorsToHTML(errors) {
+            let listItems = "";
+            for (const error of errors) {
+                listItems += `<li>Reference: ${error.reference}, Correction: ${error.correction}</li>`;
+            }
+            return `<ul>${listItems}</ul>`;
+        }
+
+        document.getElementById("text-form").addEventListener("submit", async function (event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            document.getElementById("thinking").style.display = "block";
+            const response = await fetch("/", { method: "POST", body: formData });
+            document.getElementById("thinking").style.display = "none";
+            const result = await response.json();
+            const correctedText = nl2br(result.corrected_text);
+            const spellingErrorsHTML = errorsToHTML(result.spelling_errors);
+            const grammarErrorsHTML = errorsToHTML(result.grammar_errors);
+            document.getElementById("output").innerHTML = `
+                <h2>Corrected Text:</h2>
+                <div class="output-text">${correctedText}</div>
+                <h2>Spelling Errors:</h2>
+                <div class="output-text">${spellingErrorsHTML}</div>
+                <h2>Grammar Errors:</h2>
+                <div class="output-text">${grammarErrorsHTML}</div>
+            `;
+        });
+    </script>
+</body>
+</html>

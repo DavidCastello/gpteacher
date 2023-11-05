@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("background.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+form {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+}
+
+textarea, input[type="submit"] {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #5c5cff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+pre {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    overflow-wrap: break-word; /* Add this line to handle long text lines */
+}
+
+.output-text {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    white-space: pre-wrap; /* Add this line to handle line breaks and wrapping */
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 6px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.thinking {
+  display: none;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    min-height: 100vh; /* Set the minimum height of the container element to 100% of the viewport height */
+    padding-bottom: 40px; /* Add padding to the bottom of the container */
+    box-sizing: border-box; /* Include padding and border in the total width and height */
+}
